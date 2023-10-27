@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <style>
+        .para0{
+            color:lightcoral;
+            font-size: 60px;
+        }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color:black;
+        }
+        #output {
+            font-size: 24px;
+        }
+        .para{
+            color:red;
+            font-size: 50px;
+        }
+        .bnt{
+            border-radius: 12px;
+            height: 40px;
+            width: 20%;
+            background: lightpink;
+            cursor: pointer;
+        }
+        .para1{
+            color:lightgreen;
+            font-size: 45px;
+        }
+        .typ{
+            height: 40px;
+            width: 23%;
+            background: lawngreen;
+        }
+        .out{
+            font-size: 90px;
+            color:lightblue;
+        }
+
+    </style>
+</head>
+  
+<body>
+    <p class="para0">Guess the Number Game </p>
+    <p  class="para">I'm thinking of a number between 1 and 100. Can you guess it?</p>
+    <p class="para1">Enter your guess:</p>
+    <input type="number" id="guessInput" class="typ">
+    <button onclick="checkGuess()" class="bnt">Submit Guess</button>
+    <p id="output" class="out"></p>
+
+    <script>
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById('guessInput').value;
+            attempts++;
+
+            if (userGuess < secretNumber) {
+                document.getElementById('output').textContent = 'Too low! Try again.';
+            } else if (userGuess > secretNumber) {
+                document.getElementById('output').textContent = 'Too high! Try again.';
+            } else {
+                document.getElementById('output').textContent = `Congratulations! You've guessed the number ${secretNumber} in ${attempts} attempts!`;
+            }
+        }
+    </script>
+</body>
+</html>
